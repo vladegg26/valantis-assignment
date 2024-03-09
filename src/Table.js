@@ -29,19 +29,19 @@ const columns = [
 const options = [
 	{
 		value: 10,
-		label: '10'
+		label: '10 записей'
 	},
 	{
 		value: 30,
-		label: '30'
+		label: '30 записей'
 	},
 	{
 		value: 50,
-		label: '50'
+		label: '50 записей'
 	},
 	{
 		value: 100,
-		label: '100'
+		label: '100 записей'
 	}
 ]
 
@@ -88,29 +88,13 @@ function ItemsTable() {
 				</div>
 			</div>
 
-			<span
-				style={{
-					display: 'flex',
-					justifyContent: 'center'
-				}}
-			>
-				<Button
-					icon={<ArrowLeftOutlined />}
-					disabled={offset - limit < 0}
-					onClick={() => onPrev()}
-					className='button-style'
-				></Button>
-				<span className='counter-style'>{counter} </span>
-				<Button icon={<ArrowRightOutlined />} onClick={() => onNext()} className='button-style'></Button>
-			</span>
-			<span
-				style={{
-					display: 'flex',
-					flexDirection: 'row-reverse'
-				}}
-			>
-				<Select onChange={v => changeItemsAmount(v)} style={{ width: 100 }} options={options} value={limit} />
-			</span>
+			<div className='paginator'>
+				<Button icon={<ArrowLeftOutlined />} disabled={offset - limit < 0} onClick={() => onPrev()}></Button>
+				<span className='counter'>{counter} </span>
+				<Button icon={<ArrowRightOutlined />} onClick={() => onNext()}></Button>
+
+				<Select onChange={v => changeItemsAmount(v)} options={options} value={limit} className='selector' />
+			</div>
 		</>
 	)
 }

@@ -1,26 +1,22 @@
 .table-wrapper {
 	margin: 10px;
 	height: 90vh;
-	border: 1px;
-	border-style: dashed;
-	border-color: #e0e0e0;
+	border: 1px solid #e0e0e0;
 	border-radius: 20px;
 	overflow-y: auto;
 }
 
-.counter-style {
-	border: 1px;
-	border-radius: 6px;
-	border-style: double;
-	border-color: #d9d9d9;
-	width: 25px;
-	text-align: center;
-	font-size: x-large;
-	height: 29px;
-	cursor: default;
+.paginator {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
 }
-.button style {
-	width: 100px;
-	justify-content: center;
+
+.counter {
 	font-size: x-large;
+	margin: 0 15px;
+}
+.selector {
+	margin-left: 50px;
+	width: 130px;
 }
