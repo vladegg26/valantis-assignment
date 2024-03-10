@@ -1,13 +1,17 @@
-import Table from './components/Table.js'
 import './App.css'
-import Header from './Header.js'
-import Filter from './components/Filter.js'
+import Content from './components/Content'
+import Footer from './components/Footer'
+import Header from './components/Header'
 
 function App() {
 	return (
-		<div className='app'>
-			<Table />
-		</div>
+		<>
+			<div className='app'>
+				<Header />
+				<Content />
+				<Footer />
+			</div>
+		</>
 	)
 }
 

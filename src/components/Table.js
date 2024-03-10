@@ -8,41 +8,41 @@ const columns = [
 	{
 		title: 'Id',
 		dataIndex: 'id',
-		key: 'id',
+		key: 'id'
 	},
 	{
 		title: 'Изделие',
 		dataIndex: 'product',
-		key: 'product',
+		key: 'product'
 	},
 	{
 		title: 'Брэнд',
 		dataIndex: 'brand',
-		key: 'brand',
+		key: 'brand'
 	},
 	{
 		title: 'Цена',
 		dataIndex: 'price',
-		key: 'price',
-	},
+		key: 'price'
+	}
 ]
 const options = [
 	{
 		value: 10,
-		label: '10 записей',
+		label: '10 записей'
 	},
 	{
 		value: 30,
-		label: '30 записей',
+		label: '30 записей'
 	},
 	{
 		value: 50,
-		label: '50 записей',
+		label: '50 записей'
 	},
 	{
 		value: 100,
-		label: '100 записей',
-	},
+		label: '100 записей'
+	}
 ]
 
 function ItemsTable() {
@@ -82,7 +82,7 @@ function ItemsTable() {
 			await apiService.getByFilter({
 				product: productValue ? productValue : undefined,
 				brand: brandValue ? brandValue : undefined,
-				price: priceValue ? priceValue : undefined,
+				price: priceValue ? priceValue : undefined
 			}),
 			setIsFilterApplied(true)
 		)
@@ -91,17 +91,15 @@ function ItemsTable() {
 
 	const getBrands = async () => {
 		setBrands(
-			await apiService
-				.getItemFields({ field: 'brand', offset: 0, limit: 8000 })
-				.then(res => {
-					return res.reduce((acc, val) => {
-						if (val && !acc.some(item => item.value === val))
-							acc.push({ value: val, label: val })
-						return acc
-					}, [])
-				})
+			await apiService.getItemFields({ field: 'brand', offset: 0, limit: 8000 }).then(res => {
+				return res.reduce((acc, val) => {
+					if (val && !acc.some(item => item.value === val)) acc.push({ value: val, label: val })
+					return acc
+				}, [])
+			})
 		)
 	}
+
 	const clearFilter = async () => {
 		await fetchData()
 		setProductValue(undefined)
@@ -122,11 +120,7 @@ function ItemsTable() {
 			<div className='filter'>
 				<Form layout='inline'>
 					<Form.Item label='Изделие'>
-						<Input
-							style={{ width: 150 }}
-							onChange={e => setProductValue(e.target.value)}
-							value={productValue}
-						/>
+						<Input style={{ width: 150 }} onChange={e => setProductValue(e.target.value)} value={productValue} />
 					</Form.Item>
 					<Form.Item label='Брэнд'>
 						<Select
@@ -138,19 +132,10 @@ function ItemsTable() {
 						/>
 					</Form.Item>
 					<Form.Item label='Цена'>
-						<InputNumber
-							min={0}
-							style={{ width: 150 }}
-							onChange={v => setPriceValue(v)}
-							value={priceValue}
-						/>
+						<InputNumber min={0} style={{ width: 150 }} onChange={v => setPriceValue(v)} value={priceValue} />
 					</Form.Item>
 					<Form.Item>
-						<Button
-							disabled={!productValue && !brandValue && !priceValue}
-							onClick={applyFilter}
-							type='primary'
-						>
+						<Button disabled={!productValue && !brandValue && !priceValue} onClick={applyFilter} type='primary'>
 							Фильтровать
 						</Button>
 					</Form.Item>
@@ -164,24 +149,18 @@ function ItemsTable() {
 				style={{
 					display: 'flex',
 					justifyContent: 'center',
-					flexDirection: 'column',
+					flexDirection: 'column'
 				}}
 			>
 				<div className='table-wrapper'>
-					<Table
-						dataSource={data}
-						columns={columns}
-						pagination={false}
-						loading={loading}
-					/>
+					<Table dataSource={data} columns={columns} pagination={false} loading={loading} />
 				</div>
 			</div>
 
 			<div className='paginator'>
 				{isFilterApplied ? (
 					<p style={{ marginRight: '15px' }} className='danger-text'>
-						Фильтр работает только на одну страницу. Чтобы работать с пагинацией
-						- очистите фильтр!
+						Фильтр работает только на одну страницу. Чтобы работать с пагинацией - очистите фильтр!
 					</p>
 				) : null}
 				<Button
@@ -190,11 +169,7 @@ function ItemsTable() {
 					onClick={() => onPrev()}
 				></Button>
 				<span className='counter'>{counter} </span>
-				<Button
-					icon={<ArrowRightOutlined />}
-					disabled={isFilterApplied}
-					onClick={() => onNext()}
-				></Button>
+				<Button icon={<ArrowRightOutlined />} disabled={isFilterApplied} onClick={() => onNext()}></Button>
 
 				<Select
 					onChange={v => changeItemsAmount(v)}
