@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "//valantis-assignment/static/css/main.ad9da990.css",
+    "main.js": "//valantis-assignment/static/js/main.f8a498ec.js",
+    "index.html": "//valantis-assignment/index.html",
+    "main.ad9da990.css.map": "//valantis-assignment/static/css/main.ad9da990.css.map",
+    "main.f8a498ec.js.map": "//valantis-assignment/static/js/main.f8a498ec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad9da990.css",
+    "static/js/main.f8a498ec.js"
+  ]
+}
