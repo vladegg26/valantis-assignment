@@ -17,8 +17,20 @@ export class ApiService {
 				params
 			})
 		})
-			.then(res => res.json())
+			.then(res => {
+				if (res.ok) {
+					return res.json()
+				} else {
+					return res.text().then(text => {
+						throw new Error(text)
+					})
+				}
+			})
 			.then(res => res.result)
+			.catch(err => {
+				console.log(err.message)
+				return this.#makeRequest(action, params)
+			})
 	}
 	#getByIds(params) {
 		return this.#makeRequest('get_items', params).then(items =>
